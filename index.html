@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <style>
+            .banner {
+                background-image: url(https://newsimg.koreatimes.co.kr/2025/04/24/bfbdc851-abb8-4ebd-bd37-0ee3c0000d02.jpg);
+                background-size: cover;
+                background-position: center;
+                padding: 80px 20px;
+                border-radius: 15px;
+
+                color: rgb(83, 83, 116);
+                text-align: center;
+                font-family: Georgia, serif;
+                font-size: 24px;
+            }
+            .banner h1 {
+                -webkit-text-stroke: 2px white;
+            }
+            .bildruta img {
+                width: 300px;
+                max-width: 100%;
+                border-radius: 15px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            .bildruta img:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px gray;
+            }
+            .bildruta {
+                margin-top: 40px;
+            }
+            .bildruta p {
+                width: 300px;
+                max-width: 100%;
+                text-align: center;
+                color: rgb(64, 64, 148);
+            }
+            .de_hana img {
+                width: 300px;
+                max-width: 100%;
+                border-radius: 15px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            .de_hana img:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px gray;
+            }
+            .de_hana {
+                margin-top: 40px;
+            }
+            .de_hana p {
+                width: 300px;
+                max-width: 100%;
+                text-align: center;
+                color: rgb(64, 64, 148);
+            }
+            .bilder {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                flex-wrap: wrap;
+            }
+            #katt {
+                position: fixed;
+                top: 20%;
+                left: 0;
+                width: 150px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 1s;
+                animation: snurra 2s linear infinite;
+            }
+            @keyframes snurra {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            #katt.synlig {
+                opacity: 1;
+            }
+
+            .menyomrade {
+                width: 250px;
+                max-width: 90%;
+                margin: 20px auto;
+                text-align: center;
+                font-family: Georgia, serif;
+            }
+
+            #menyknapp {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 15px;
+                background-color: pink; 
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+            }
+
+            #meny {
+                display: grid;
+                grid-template-rows: 0fr;
+                overflow: hidden;
+                border-radius: 15px;
+                background-color: rgb(255, 236, 239); 
+                color: #783b5e;
+                transition: grid-template-rows 0.4s ease;
+            }
+
+            #meny.ppen {
+                grid-template-rows: 1fr;
+            }
+
+            #meny .menyinnehall {
+                overflow: hidden;
+            }
+
+            #meny .menyinnehall p {
+                margin: 15px;
+            }
+
+            .knapprad {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .blomma {
+                width: 35px;
+                height: 35px;
+                object-fit: contain;
+            }
+
+            #menyknapp {
+                flex: 1;
+                min-width: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="banner">
+            <h1>Välkommen hit!</h1>
+        </div>
+        <div class="bilder">
+            <div class="bildruta">
+                <img src="https://images.genius.com/a025eee88f4060ab1cff7f758580c960.742x742x1.jpg" alt="Himesha">
+                <p>Himesha is the oldest member of Cosmosy. She is the main rapper, lead dancer and unnie.</p>
+            </div>
+          <div class="de_hana">
+            <img src="https://images.genius.com/4e4b36eefd9ffc4fa0415f61b04919a1.663x663x1.jpg" alt="de_hana">
+            <p>De_Hana is the lead vocalist, sub rapper and visual of Cosmosy.</p>
+          </div>
+        </div>
+
+        <img id="katt" src="https://pngimg.com/uploads/cat/cat_PNG50447.png" alt="kitty">
+
+        <audio id="kattljud" src="kattljud.mp3" loop></audio>
+        <audio id="hanaljud" src="prettyde_hana.mp3"></audio>
+
+        <div class="menyomrade">
+            <div class="knapprad">
+                <img class="blomma" src="https://png.pngtree.com/png-vector/20250506/ourmid/pngtree-pink-cherry-blossom-petal-png-image_16160445.png" alt="">
+
+                <button class="menyknapp" id="menyknapp" type="button"
+                aria-expanded="false" aria-controls="meny">
+                Extra!
+                </button>
+
+                <img class="blomma" src="https://png.pngtree.com/png-vector/20250506/ourmid/pngtree-pink-cherry-blossom-petal-png-image_16160445.png" alt="">
+            </div>
+
+            <div id="meny">
+                <div class="menyinnehall">
+                    <p>Vill du lära dig mer om Cosmosy? Följ dem på Instagram, cosmosy_ig, TikTok, cosmosy_tk, och YouTube, cosmosy_yt!</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const bildruta = document.querySelector(".bildruta");
+            const katt = document.querySelector("#katt");
+            const kattljud = document.querySelector("#kattljud");
+            const de_hana = document.querySelector(".de_hana");
+            const hanaljud = document.querySelector("#hanaljud");
+
+            de_hana.addEventListener("click", function () {
+                hanaljud.currentTime = 0;
+                hanaljud.play();
+            });
+
+            let position = 0;
+            let riktning = 1;
+
+            setInterval(function () {
+                // Flytta katten två pixlar åt höger eller vänster.
+                position = position + 5 * riktning;
+
+                // Vänd när katten når någon av skärmens kanter.
+                const hograKanten = window.innerWidth - katt.offsetWidth;
+
+                if (position >= hograKanten) {
+                    riktning = -1;
+                }
+
+                if (position <= 0) {
+                    riktning = 1;
+                }
+
+                katt.style.left = position + "px";
+            }, 20);
+
+            bildruta.addEventListener("click", function () {
+                katt.classList.toggle("synlig");
+
+                if (katt.classList.contains("synlig")) {
+                    kattljud.play();
+                } else {
+                    kattljud.pause();
+                    kattljud.currentTime = 0;
+                }
+            });
+            
+            const menyknapp = document.querySelector("#menyknapp");
+            const meny = document.querySelector("#meny");
+
+            menyknapp.addEventListener("click", function () {
+                meny.classList.toggle("ppen");
+                menyknapp.setAttribute(
+                    "aria-expanded",
+                    String(meny.classList.contains("ppen"))
+            );
+            });
+
+        </script>
+    </body>
+</html>
